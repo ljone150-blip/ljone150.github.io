@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaShanae's First Website</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="description" content="By LAJ - Author and creative writer portfolio website">
+  <meta name="keywords" content="LAJ, author, writer, books, creative writing">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>By LAJ | Author Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Hello world! I'm La'Shanaè Jones. I'm learning how to build websites.
+
+  <!-- INTRO VIDEO -->
+  <section class="intro-video">
+    <video autoplay muted loop playsinline>
+      <source src="video/intro.mp4" type="video/mp4">
+    </video>
+    <div class="intro-overlay">
+      <h1>By LAJ</h1>
+      <p>Cinematic Novelist</p>
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Upcoming Releases</a></li>
+        <li><a href="#">Writer’s Corner</a></li>
+        <li><a href="#">ARC Request</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section class="section-card fade-in">
+      <div class="about">
+        <img src="IMG_1449.jpeg" alt="Author photo">
+        <div class="about-text">
+          <h2>About LAJ</h2> <br>
+          <p>
+            Self-Published Author, LAJ, was born in a rural area in Missouri. 
+            She got her love for writing very early on through journal keeping. 
+            With the influences of English teachers and the amazing female 
+            support system of her family, co-workers, and friends, her 
+            journaling turned to poetry, lyrics, short stories, and now novels.
+            When asked who inspired her debut novel LAJ would give the same answer 
+            time and time again: 
+          </p><br>
+          <p class="quote">
+            <em>
+              “The women around me. I feel like the women who raised me and who influenced 
+              my life, took a lot. Carried a lot. Gave so much there was never anything left for 
+              themselves. And in being a mom I’m seeing them through new light, seeing myself in them. 
+              In my novels I want those women to get some of what they've lost along the way back. I 
+              want them to find hope, find strength, but most of all themselves. I want them to be able
+              to see themselves in the light of positive love. If they couldn't find it in life 
+              I want them to at least know what it looks like, what it should feel like.”
+            </em>
+          </p>
+
+          <br>
+          <p>
+            LAJ’s work is grounded in representation, healing, and love—especially 
+            in the nuanced ways Black women must receive it to truly have it. Her stories are odes 
+            to the women around her: their sacrifices, resilience, tenderness, and truth.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED BOOKS -->
+    <section class="section-card slide-up">
+      <h2 class="center">Featured Books</h2>
+      <div class="book-grid">
+        <div class="book" data-index="0"><img src="book1.jpg" alt="Book 1"></div>
+        <div class="book" data-index="1"><img src="book2.jpg" alt="Book 2"></div>
+        <div class="book" data-index="2"><img src="book3.jpg" alt="Book 3"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="fade-in">
+    <p>Follow me</p>
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@bylaj" target="_blank"><img src="2.png" alt="TikTok"></a>
+      <a href="https://www.instagram.com/_bylaj" target="_blank"><img src="3.png" alt="Instagram"></a>
+      <a href="https://www.tumblr.com/bylaj" target="_blank"><img src="4.png" alt="Tumblr"></a>
+    </div>
+    <p>© 2026 By LAJ</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
