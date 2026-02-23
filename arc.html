@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="ARC Request - By LAJ">
+  <meta name="keywords" content="LAJ, author, ARC, book request">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>By LAJ | ARC Request</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="upcoming.html">Upcoming Releases</a></li>
+      <li><a href="writers-corner.html">Writer’s Corner</a></li>
+      <li><a href="arc.html">ARC Request</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="arc-card fade-in">
+    <h2 class="center">Request an Advance Reader Copy</h2>
+    <p class="center">Fill out the form below to request an ARC of an upcoming release. We'll review your request and send you a copy if selected.</p>
+
+    <form id="arcRequestForm">
+      <label for="name">Full Name<span class="required">*</span></label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+      <label for="email">Email<span class="required">*</span></label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <label for="book">Book Request<span class="required">*</span></label>
+      <select id="book" name="book" required>
+        <option value="" disabled selected>Select a book</option>
+        <option value="book1">M(us)e</option>
+        <option value="book2">Shameless</option>
+        <option value="book3">Primal</option>
+      </select>
+
+      <label for="copyType">Preferred Copy Type<span class="required">*</span></label>
+      <select id="copyType" name="copyType" required>
+        <option value="" disabled selected>Select copy type</option>
+        <option value="ebook">Ebook</option>
+        <option value="paperback">Paperback</option>
+      </select>
+
+      <label for="interest">Why are you interested in this title?<span class="required">*</span></label>
+      <textarea id="interest" name="interest" rows="5" placeholder="Tell us why you want this ARC" required></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <p id="formMessage"></p>
+  </section>
+</main>
+
+<footer class="fade-in">
+  <p>Follow me</p>
+  <div class="social-icons">
+    <a href="https://www.tiktok.com/@bylaj" target="_blank"><img src="2.png" alt="TikTok"></a>
+    <a href="https://www.instagram.com/_bylaj" target="_blank"><img src="3.png" alt="Instagram"></a>
+    <a href="https://www.tumblr.com/bylaj" target="_blank"><img src="4.png" alt="Tumblr"></a>
+  </div>
+  <p>© 2026 By LAJ</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
