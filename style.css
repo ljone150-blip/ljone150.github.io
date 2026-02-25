@@ -928,8 +928,8 @@ body.lightbox-open {
 }
 
 #wc-lightbox .cover-page img {
-  max-width: 90%;
-  max-height: 110%;
+  max-width: 85%;
+  max-height: 85%;
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 30px 90px rgba(0,0,0,0.4);
