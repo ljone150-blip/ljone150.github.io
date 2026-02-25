@@ -36,8 +36,27 @@
         <tr>
           <td class="title-cell">
             <div class="cover-wrapper" data-index="0">
-              <img src="book1.jpg" alt="M(us)e" data-synopsis="When haunted by the nightmares that prevent a way to their dreams, those who still choose to close their eyes will bear the signs of her artistry...">
-            </div>
+              <img src="book1.jpg" alt="M(us)e cover" data-synopsis="When haunted by the nightmares that prevent a way to their dreams, 
+those who still choose to close their eyes will bear the signs of her artistry.
+With the little she’d given, the spark of inspiration stretched to an end far beyond any protection of gates or the 
+safe one seeks within havens. 
+And of all she could’ve gifted to see past the horrors along the way,they only ever chanted desires of her name.
+
+It was their passion that carried the tales of the Musa’s empowerment to one with a mere peephole. Allowing him to bear
+witness to a world where he alone existed for her acknowledgment. 
+
+Revealing one of his own, as it is the five shapes used to define the ninth weren’t amongst the eight musae from whom 
+he earned his accolades. 
+
+Despite all for which they meant––the many plaques branded with proof of his excellence over the rest––the value in 
+the collection of the five wouldn’t end upon obtainment. 
+
+For it was the ninth that made the purest of golds leak from his mind, just like all those whom she sired after 
+himself. 
+That’s what’s led many men to in this story to death, chasing the woman all men hope to find in the end:
+his purpose.
+
+His most prized, and not yet possessed.">
             <div class="book-title">M(us)e</div>
           </td>
           <td>Dark Romance, Thriller</td>
@@ -45,8 +64,31 @@
         </tr>
         <tr>
           <td class="title-cell">
-            <div class="cover-wrapper" data-index="1">
-              <img src="book2.jpg" alt="Shameless" data-synopsis="You, the woman whose desires are serving a sentence in confinement...">
+            <div class="cover-wrapper" data-index="1"><img src="book2.jpg" alt="Shameless cover" data-synopsis="
+<strong> You </strong>, the woman whose desires are serving a sentence in confinement—I would like to know, where does all your trust go, being that your environment is unsustainable for your cravings to grow?
+
+<i> Would you free yourself if you were capable? </i>
+
+<strong> You </strong>, the woman with a box tucked away in the back of your closet, filled to the brim with items you can only pull out in private—did you really think your achievements were enough to hide it?
+
+<i> To experience the fun of your darkness, would you come where the light is? </i>
+
+<strong> You </strong>, so daring in your fruitless attempts to silence your desires through untraceable browsers. It’s funny you can find the nerve to act surprised when the yearning got louder.
+
+<i> So how is it that you’re still afraid of your power? </i>
+
+I know who you are, the days your lover is none the wiser to where you’ve gone. And I couldn’t help but notice as you filled the absence in front of an audience, that you would increase the dosage with the more people that were watching.
+
+<i> When I ask, I hope you remember who it was that said you were so undeserving. </i> 
+
+<strong> You </strong>, the woman so confidently lost on a path you didn’t pave, will you stop listening to words of They and accept the truth of how far you’ve been astray? As your Man of Reason, the only justification you ever needed was my name.
+
+So it’s my pleasure to show you the way.
+
+To free your waters and finally obtain
+
+A life with <span class='fade-text'>less shame</span>.
+">
             </div>
             <div class="book-title">Shameless</div>
           </td>
@@ -56,7 +98,8 @@
         <tr>
           <td class="title-cell">
             <div class="cover-wrapper" data-index="2">
-              <img src="book3.jpg" alt="Primal" data-synopsis="Once a hunt started, it never stopped...">
+              <img src="book3.jpg" alt="Primal cover" data-synopsis=" 
+">
             </div>
             <div class="book-title">Primal</div>
           </td>
@@ -72,9 +115,10 @@
 <div id="lightbox" class="lightbox">
   <div class="book-container">
 
+
     <!-- Navigation Arrows -->
-    <span class="nav prev">&#10094;</span>
-    <span class="nav next">&#10095;</span>
+   <span class="nav prev" role="button" tabindex="0" aria-label="Previous Page">&#10094;</span>
+    <span class="nav next" role="button" tabindex="0" aria-label="Next Page">&#10095;</span>
 
     <!-- Pages -->
     <div class="book-page-wrapper">
@@ -93,9 +137,32 @@
     <a href="https://www.instagram.com/_bylaj" target="_blank"><img src="3.png" alt="Instagram"></a>
     <a href="https://www.tumblr.com/bylaj" target="_blank"><img src="4.png" alt="Tumblr"></a>
   </div>
+  <p>Contact us: <a href="mailto:bylajsupport@bylaj.com">bylajsupport@bylaj.com</a></p>
   <p>© 2026 By LAJ</p>
 </footer>
 
 <script src="script.js"></script>
+<script>
+  const prevBtn = document.querySelector('#wc-lightbox .prev');
+  const nextBtn = document.querySelector('#wc-lightbox .next');
+
+  // Allow Enter or Space to trigger click
+  [prevBtn, nextBtn].forEach(btn => {
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+
+  // Allow left/right arrows to navigate
+  document.addEventListener('keydown', e => {
+    if (!document.body.classList.contains('lightbox-open')) return; // only if lightbox is open
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+    if (e.key === 'Escape') document.querySelector('#wc-lightbox .close').click();
+  });
+</script>
 </body>
 </html>
