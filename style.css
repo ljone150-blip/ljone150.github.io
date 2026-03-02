@@ -149,7 +149,6 @@ p, .writers-subtitle {
   width: 280px;
   flex-shrink: 0;
   filter: grayscale(10%) contrast(1.05);
-  box-shadow: none;
 }
 
 .about-text { max-width: 650px; }
