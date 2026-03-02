@@ -142,27 +142,5 @@ A life with <span class='fade-text'>less shame</span>.
 </footer>
 
 <script src="script.js"></script>
-<script>
-  const prevBtn = document.querySelector('#wc-lightbox .prev');
-  const nextBtn = document.querySelector('#wc-lightbox .next');
-
-  // Allow Enter or Space to trigger click
-  [prevBtn, nextBtn].forEach(btn => {
-    btn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        btn.click();
-      }
-    });
-  });
-
-  // Allow left/right arrows to navigate
-  document.addEventListener('keydown', e => {
-    if (!document.body.classList.contains('lightbox-open')) return; // only if lightbox is open
-    if (e.key === 'ArrowLeft') prevBtn.click();
-    if (e.key === 'ArrowRight') nextBtn.click();
-    if (e.key === 'Escape') document.querySelector('#wc-lightbox .close').click();
-  });
-</script>
 </body>
 </html>
