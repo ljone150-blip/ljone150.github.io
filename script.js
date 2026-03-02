@@ -140,6 +140,37 @@ document.addEventListener('DOMContentLoaded', () => {
        WRITERS CORNER LIGHTBOX
        Two-Page 3D Book Mode
     =========================== */
+    if (isMobileView()) {
+
+  const book = wcBooks[wcCurrentBookIndex];
+  const firstTextPage = book.pages[0] || '';
+
+  if (wcCurrentSpreadIndex === 0) {
+    // Cover
+    bookPagesWrapper.innerHTML = `
+      <div class="wc-book">
+        <div class="wc-spread">
+          <div class="wc-page cover-page">
+            <img src="${book.cover}" alt="${book.title}">
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    // Text
+    bookPagesWrapper.innerHTML = `
+      <div class="wc-book">
+        <div class="wc-spread">
+          <div class="wc-page text-page">
+            <div class="wc-page-inner">${firstTextPage}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  return;
+} 
     const wcLightbox = document.getElementById('wc-lightbox');
 
     if (wcLightbox && longPosts.length) {
@@ -466,17 +497,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === lightbox) closeLightbox();
       });
 
-      prevBtn.addEventListener('click', () =>
-        showPage((upCurrentIndex - 1 + currentBookData.length) %
-          currentBookData.length)
-      );
+      let mobileTextVisible = false;
 
-      nextBtn.addEventListener('click', () =>
-        showPage((upCurrentIndex + 1) %
-          currentBookData.length)
-      );
+prevBtn.addEventListener('click', () => {
 
-    })();
+  if (isMobileView()) {
+
+    if (mobileTextVisible) {
+      mobileTextVisible = false;
+      showPage(upCurrentIndex, false);
+    } else {
+      upCurrentIndex =
+        (upCurrentIndex - 1 + currentBookData.length) %
+        currentBookData.length;
+      showPage(upCurrentIndex, false);
+    }
+
+  } else {
+    showPage(
+      (upCurrentIndex - 1 + currentBookData.length) %
+      currentBookData.length
+    );
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+
+  if (isMobileView()) {
+
+    if (!mobileTextVisible) {
+      mobileTextVisible = true;
+      showPage(upCurrentIndex, true);
+    } else {
+      mobileTextVisible = false;
+      upCurrentIndex =
+        (upCurrentIndex + 1) %
+        currentBookData.length;
+      showPage(upCurrentIndex, false);
+    }
+
+  } else {
+    showPage(
+      (upCurrentIndex + 1) %
+      currentBookData.length
+    );
   }
 });
 
