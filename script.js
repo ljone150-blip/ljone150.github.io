@@ -3,6 +3,9 @@
 =========================== */
 const fadeElements = document.querySelectorAll('.fade-in');
 const slideElements = document.querySelectorAll('.slide-up');
+function isMobileView() {
+  return window.innerWidth <= 768;
+}
 
 /* ===========================
    SCROLL ANIMATIONS
@@ -341,30 +344,56 @@ document.addEventListener('DOMContentLoaded', () => {
           };
         }).filter(Boolean);
 
-      const showPage = (index) => {
+      const showPage = (index, mobileTextMode = false) => {
 
-        const bookData = currentBookData[index];
-        if (!bookData) return;
+  const bookData = currentBookData[index];
+  if (!bookData) return;
 
-        let synopsis = bookData.synopsis
-          .replace(/her name/g,
-            '<span class="highlight">her name</span>')
-          .replace(/his purpose/g,
-            '<span class="highlight">his purpose</span>');
+  let synopsis = bookData.synopsis
+    .replace(/her name/g,
+      '<span class="highlight">her name</span>')
+    .replace(/his purpose/g,
+      '<span class="highlight">his purpose</span>');
 
-        bookPagesWrapper.innerHTML = `
-          <div class="book-page">
-            <div class="book-left">
-              <img src="${bookData.imgSrc}" alt="${bookData.title}">
-            </div>
-            <div class="book-right">
-              <div class="book-synopsis centered">${synopsis}</div>
-            </div>
+  // MOBILE MODE
+  if (isMobileView()) {
+
+    if (!mobileTextMode) {
+      // Cover page
+      bookPagesWrapper.innerHTML = `
+        <div class="book-page">
+          <div class="book-left" style="width:100%">
+            <img src="${bookData.imgSrc}" alt="${bookData.title}">
           </div>
-        `;
+        </div>
+      `;
+    } else {
+      // Text page
+      bookPagesWrapper.innerHTML = `
+        <div class="book-page">
+          <div class="book-right" style="width:100%">
+            <div class="book-synopsis centered">${synopsis}</div>
+          </div>
+        </div>
+      `;
+    }
 
-        upCurrentIndex = index;
-      };
+  } else {
+    // DESKTOP (unchanged)
+    bookPagesWrapper.innerHTML = `
+      <div class="book-page">
+        <div class="book-left">
+          <img src="${bookData.imgSrc}" alt="${bookData.title}">
+        </div>
+        <div class="book-right">
+          <div class="book-synopsis centered">${synopsis}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  upCurrentIndex = index;
+};
 
       /* -------- Keyboard Support -------- */
       function handleUpKeydown(e) {
