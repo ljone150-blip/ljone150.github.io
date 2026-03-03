@@ -178,48 +178,68 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         function renderSpread(withFlip = true, direction = 'next') {
+  const book = wcBooks[wcCurrentBookIndex];
+  if (!book) return;
 
-          const book = wcBooks[wcCurrentBookIndex];
-          if (!book) return;
+  const isMobile = window.innerWidth <= 768; // Mobile breakpoint
+  let leftContent = '';
+  let rightContent = '';
 
-          let leftContent = '';
-          let rightContent = '';
+  if (wcCurrentSpreadIndex === 0) {
+    // Cover spread
+    if (isMobile) {
+      // Mobile: only show cover page
+      rightContent = `
+        <div class="wc-page cover-page">
+          <img src="${book.cover}" alt="${book.title}">
+        </div>
+      `;
+    } else {
+      // Desktop: blank left + cover right
+      leftContent = `<div class="wc-page blank-page"></div>`;
+      rightContent = `
+        <div class="wc-page cover-page">
+          <img src="${book.cover}" alt="${book.title}">
+        </div>
+      `;
+    }
+  } else {
+    // Text spreads
+    const pageIndex = (wcCurrentSpreadIndex - 1) * 2;
+    const leftText = book.pages[pageIndex] || '';
+    const rightText = book.pages[pageIndex + 1] || '';
 
-          if (wcCurrentSpreadIndex === 0) {
-            leftContent = `<div class="wc-page blank-page"></div>`;
-            rightContent = `
-              <div class="wc-page cover-page">
-                <img src="${book.cover}" alt="${book.title}">
-              </div>
-            `;
-          } else {
-            const pageIndex = (wcCurrentSpreadIndex - 1) * 2;
+    if (isMobile) {
+      // Mobile: merge left+right into one page
+      rightContent = `
+        <div class="wc-page text-page">
+          <div class="wc-page-inner">${leftText}${rightText}</div>
+        </div>
+      `;
+    } else {
+      // Desktop: left + right pages
+      leftContent = `
+        <div class="wc-page text-page">
+          <div class="wc-page-inner">${leftText}</div>
+        </div>
+      `;
+      rightContent = `
+        <div class="wc-page text-page">
+          <div class="wc-page-inner">${rightText}</div>
+        </div>
+      `;
+    }
+  }
 
-            const leftText = book.pages[pageIndex] || '';
-            const rightText = book.pages[pageIndex + 1] || '';
-
-            leftContent = `
-              <div class="wc-page text-page">
-                <div class="wc-page-inner">${leftText}</div>
-              </div>
-            `;
-
-            rightContent = `
-              <div class="wc-page text-page">
-                <div class="wc-page-inner">${rightText}</div>
-              </div>
-            `;
-          }
-
-          bookPagesWrapper.innerHTML = `
-            <div class="wc-book ${withFlip ? 'flip-' + direction : ''}">
-              <div class="wc-spread">
-                ${leftContent}
-                ${rightContent}
-              </div>
-            </div>
-          `;
-        }
+  bookPagesWrapper.innerHTML = `
+    <div class="wc-book ${withFlip ? 'flip-' + direction : ''}">
+      <div class="wc-spread">
+        ${leftContent}
+        ${rightContent}
+      </div>
+    </div>
+  `;
+}
 
         function nextSpread() {
           const book = wcBooks[wcCurrentBookIndex];
