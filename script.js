@@ -387,72 +387,30 @@ window.addEventListener('resize', () => {
         }).filter(Boolean);
 
       const showPage = (index) => {
-  const bookData = currentBookData[index];
-  if (!bookData) return;
 
-  const isMobile = window.innerWidth <= 768;
+        const bookData = currentBookData[index];
+        if (!bookData) return;
 
-  // Highlight key phrases
-  const synopsis = bookData.synopsis
-    .replace(/her name/g, '<span class="highlight">her name</span>')
-    .replace(/his purpose/g, '<span class="highlight">his purpose</span>');
+        let synopsis = bookData.synopsis
+          .replace(/her name/g,
+            '<span class="highlight">her name</span>')
+          .replace(/his purpose/g,
+            '<span class="highlight">his purpose</span>');
 
-  // Mobile flip feature
-  if (isMobile) {
+        bookPagesWrapper.innerHTML = `
+          <div class="book-page">
+            <div class="book-left">
+              <img src="${bookData.imgSrc}" alt="${bookData.title}">
+            </div>
+            <div class="book-right">
+              <div class="book-synopsis centered">${synopsis}</div>
+            </div>
+          </div>
+        `;
 
-    // Initialize mobile page index if undefined
-    if (typeof bookData.mobilePageIndex === 'undefined') bookData.mobilePageIndex = 0;
+        upCurrentIndex = index;
+      };
 
-    if (bookData.mobilePageIndex === 0) {
-      // Cover page
-      bookPagesWrapper.innerHTML = `
-        <div class="book-page mobile-cover">
-          <img src="${bookData.imgSrc}" alt="${bookData.title}">
-        </div>
-      `;
-    } else {
-      // Synopsis page (scrollable)
-      bookPagesWrapper.innerHTML = `
-        <div class="book-page mobile-synopsis" style="overflow-y: auto; max-height: 80vh; padding: 1rem;">
-          <div class="book-synopsis centered">${synopsis}</div>
-        </div>
-      `;
-    }
-
-    // Update arrows for mobile
-    nextBtn.onclick = () => {
-      bookData.mobilePageIndex = (bookData.mobilePageIndex + 1) % 2;
-      showPage(index);
-    };
-    prevBtn.onclick = () => {
-      bookData.mobilePageIndex = (bookData.mobilePageIndex - 1 + 2) % 2;
-      showPage(index);
-    };
-
-    upCurrentIndex = index;
-
-  } else {
-    // Desktop: side-by-side layout
-    bookPagesWrapper.innerHTML = `
-      <div class="book-page">
-        <div class="book-left">
-          <img src="${bookData.imgSrc}" alt="${bookData.title}">
-        </div>
-        <div class="book-right">
-          <div class="book-synopsis centered">${synopsis}</div>
-        </div>
-      </div>
-    `;
-
-    upCurrentIndex = index;
-
-    // Arrows go to next/prev book
-    nextBtn.onclick = () =>
-      showPage((upCurrentIndex + 1) % currentBookData.length);
-    prevBtn.onclick = () =>
-      showPage((upCurrentIndex - 1 + currentBookData.length) % currentBookData.length);
-  }
-};
       /* -------- Keyboard Support -------- */
       function handleUpKeydown(e) {
         if (!upIsOpen) return;
