@@ -67,12 +67,38 @@ nav a:hover::after {
 /* -------------------------
    HERO / INTRO VIDEOS
 --------------------------*/
-.intro-video, .hero-video { position: relative; height: 100vh; overflow: hidden; }
+.hero-video {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
 
-.intro-video video, .hero-video video {
+.hero-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background: rgba(0,0,0,0.3); /* optional overlay */
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .intro-overlay, .hero-overlay {
@@ -87,18 +113,6 @@ nav a:hover::after {
 
 .intro-overlay { color: white; background: rgba(0,0,0,0.3); }
 .hero-overlay { background: rgba(0,0,0,0.35); }
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
 
 .intro-overlay h1, .hero-overlay h1 {
   font-family: 'Montserrat',  cursive;
