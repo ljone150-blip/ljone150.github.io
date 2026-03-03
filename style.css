@@ -275,40 +275,29 @@ p, .writers-subtitle {
   color: #3a3a3a;
 }
 
-/* ===========================
-   UPCOMING TABLE - MOBILE FIX
-=========================== */
-@media (max-width: 768px) {
-  #upcoming-table {
-    width: 95%;       /* narrower margin on mobile */
-    display: block;   /* allow wrapping */
-  }
+@media screen and (max-width: 768px) {
 
-  #upcoming-table tr {
-    display: flex;
-    flex-direction: column; /* stack each row vertically */
-    align-items: center;
-    margin-bottom: 30px;
-  }
-
-  #upcoming-table th, 
-  #upcoming-table td {
-    display: block;
-    width: 100%;
-    padding: 10px 5px; /* smaller padding on mobile */
-    text-align: center;
-  }
-
+  /* Stack the cover below the title */
   #upcoming-table th:first-child,
   #upcoming-table td:first-child {
-    width: 100%; /* override fixed 40% width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding: 15px 5px;
   }
 
+  /* Make images smaller and centered */
   .cover-wrapper img {
-    width: 80%;       /* shrink images to fit mobile */
-    max-width: 250px; /* optional max to prevent huge images */
+    width: 140px; /* adjust as needed */
     height: auto;
-    object-fit: cover;
+    margin-top: 10px; /* space below title */
+  }
+
+  /* Reduce spacing inside title cell */
+  .title-cell {
+    gap: 8px;
   }
 }
 
