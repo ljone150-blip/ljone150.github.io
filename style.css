@@ -877,6 +877,23 @@ body.lightbox-open {
   text-align: center;
 }
 
+#wc-lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;          /* JS changes this */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+}
+
+#wc-lightbox .book-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* =====================================================
    WRITERS CORNER – BOOK MODE
 ===================================================== */
