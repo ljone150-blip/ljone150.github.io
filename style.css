@@ -829,15 +829,13 @@ body.lightbox-open {
   outline: none;
 }
 
-
-#wc-lightbox .book-page-wrapper img:focus {
-  outline: none;
+x/* Writers Corner: remove oversized focus box from long post images */
+.writers-page .blog-post.long:focus,
+.writers-page .blog-post.long *:focus,
+.writers-page .post-image-wrapper:focus {
+  outline: none !important;   /* remove default focus ring */
 }
 
-
-#wc-lightbox .book-page-wrapper .wc-page:focus {
-  outline: none;
-}
 
 /* ===========================
    WRITERS CORNER "CLICK FOR MORE" HOVER LABEL
