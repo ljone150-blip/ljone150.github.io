@@ -1054,10 +1054,6 @@ body.lightbox-open {
     width: 100%;
   }
 
-  #wc-lightbox .wc-page:first-child {
-    display: none;
-  }
-
   #wc-lightbox .text-page {
     font-size: 1rem;
   }
