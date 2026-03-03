@@ -277,27 +277,40 @@ p, .writers-subtitle {
 
 @media screen and (max-width: 768px) {
 
-  /* Stack the cover below the title */
-  #upcoming-table th:first-child,
-  #upcoming-table td:first-child {
+  /* Make the table take full width on mobile */
+  #upcoming-table {
+    width: 100%;
+    display: block;
+  }
+
+  /* Stack table rows as blocks */
+  #upcoming-table tr {
+    display: block;
+    margin-bottom: 30px; /* space between entries */
+  }
+
+  /* Stack table cells inside each row */
+  #upcoming-table th,
+  #upcoming-table td {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  /* Center title + cover vertically */
+  .title-cell {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    text-align: center;
-    padding: 15px 5px;
+    gap: 10px;
   }
 
-  /* Make images smaller and centered */
   .cover-wrapper img {
-    width: 140px; /* adjust as needed */
+    width: 140px; /* or whatever fits */
     height: auto;
-    margin-top: 10px; /* space below title */
-  }
-
-  /* Reduce spacing inside title cell */
-  .title-cell {
-    gap: 8px;
+    object-fit: cover;
+    margin: 0 auto;
   }
 }
 
