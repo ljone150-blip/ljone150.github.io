@@ -51,16 +51,24 @@
           <button class="read-more-btn">Read More</button>
 
           <div class="post-actions">
-            <button class="love-btn">❤️ Love (<span class="love-count">0</span>)</button>
-            <button class="toggle-comments">💬 Comments</button>
-          </div>
+  <button class="love-btn" 
+          aria-pressed="false" 
+          aria-label="Love this post. 0 loves">
+    ❤️ Love (<span class="love-count" aria-live="polite">0</span>)
+  </button>
 
-          <div class="comment-section">
-            <textarea placeholder="Add a comment..."></textarea>
-            <button class="submit-comment">Submit</button>
-            <div class="comments-container"></div>
-          </div>
-        </div>
+  <button class="toggle-comments" 
+          aria-expanded="false" 
+          aria-controls="comment-section-1">
+    💬 Comments
+  </button>
+</div>
+
+<div id="comment-section-1" class="comment-section" hidden>
+  <textarea placeholder="Add a comment..." aria-label="Add a comment"></textarea>
+  <button class="submit-comment">Submit</button>
+  <div class="comments-container" aria-live="polite"></div>
+</div>
       </article>
 
       <article class="blog-post short"> 
@@ -102,17 +110,25 @@
 
           <button class="read-more-btn">Read More</button>
 
-          <div class="post-actions">
-            <button class="love-btn">❤️ Love (<span class="love-count">0</span>)</button>
-            <button class="toggle-comments">💬 Comments</button>
-          </div>
+         <div class="post-actions">
+  <button class="love-btn" 
+          aria-pressed="false" 
+          aria-label="Love this post. 0 loves">
+    ❤️ Love (<span class="love-count" aria-live="polite">0</span>)
+  </button>
 
-          <div class="comment-section">
-            <textarea placeholder="Add a comment..."></textarea>
-            <button class="submit-comment">Submit</button>
-            <div class="comments-container"></div>
-          </div>
-        </div>
+  <button class="toggle-comments" 
+          aria-expanded="false" 
+          aria-controls="comment-section-1">
+    💬 Comments
+  </button>
+</div>
+
+<div id="comment-section-1" class="comment-section" hidden>
+  <textarea placeholder="Add a comment..." aria-label="Add a comment"></textarea>
+  <button class="submit-comment">Submit</button>
+  <div class="comments-container" aria-live="polite"></div>
+</div>
       </article>
 
       <article class="blog-post short">
@@ -152,17 +168,25 @@
 
           <button class="read-more-btn">Read More</button>
 
-          <div class="post-actions">
-            <button class="love-btn">❤️ Love (<span class="love-count">0</span>)</button>
-            <button class="toggle-comments">💬 Comments</button>
-          </div>
+         <div class="post-actions">
+  <button class="love-btn" 
+          aria-pressed="false" 
+          aria-label="Love this post. 0 loves">
+    ❤️ Love (<span class="love-count" aria-live="polite">0</span>)
+  </button>
 
-          <div class="comment-section">
-            <textarea placeholder="Add a comment..."></textarea>
-            <button class="submit-comment">Submit</button>
-            <div class="comments-container"></div>
-          </div>
-        </div>
+  <button class="toggle-comments" 
+          aria-expanded="false" 
+          aria-controls="comment-section-1">
+    💬 Comments
+  </button>
+</div>
+
+<div id="comment-section-1" class="comment-section" hidden>
+  <textarea placeholder="Add a comment..." aria-label="Add a comment"></textarea>
+  <button class="submit-comment">Submit</button>
+  <div class="comments-container" aria-live="polite"></div>
+</div>
       </article>
 
       <!-- LONG POSTS WITH FULL CONTENT ATTRIBUTE -->
@@ -314,10 +338,14 @@
                 </p>
 
 
-        <div class="blog-card">
-          <div class="post-image-wrapper">
-            <img src="ch22.jpg" alt="Click to open full Ch 22 Memoir cover image featuring a train in the center and text All Aboard: The train of Grace. Subtext: Its leaving whether you're ready or not">
-          </div>
+       <div class="blog-card">
+  <div class="post-image-wrapper">
+    <button class="open-lightbox" aria-label="Open full Ch 22 Memoir image in a lightbox">
+      <img src="ch22.jpg" 
+           alt="Ch 22 Memoir cover featuring a train in the center and text 'All Aboard: The train of Grace'. Subtext: 'It's leaving whether you're ready or not'">
+    </button>
+  </div>
+</div>
           <h3>Memoir: Chapter 22 </h3>
           <p><strong> Lineage. Legacy. Inheritance. </strong> </p>
           <p> At 7:24 AM June 6, 2017, those three words and the weight of 
@@ -327,16 +355,24 @@
           <p><em>– LAJ, Summer 2025</em></p>
 
           <div class="post-actions">
-            <button class="love-btn">❤️ Love (<span class="love-count">0</span>)</button>
-            <button class="toggle-comments">💬 Comments</button>
-          </div>
+  <button class="love-btn" 
+          aria-pressed="false" 
+          aria-label="Love this post. 0 loves">
+    ❤️ Love (<span class="love-count" aria-live="polite">0</span>)
+  </button>
 
-          <div class="comment-section">
-            <textarea placeholder="Add a comment..."></textarea>
-            <button class="submit-comment">Submit</button>
-            <div class="comments-container"></div>
-          </div>
-        </div>
+  <button class="toggle-comments" 
+          aria-expanded="false" 
+          aria-controls="comment-section-1">
+    💬 Comments
+  </button>
+</div>
+
+<div id="comment-section-1" class="comment-section" hidden>
+  <textarea placeholder="Add a comment..." aria-label="Add a comment"></textarea>
+  <button class="submit-comment">Submit</button>
+  <div class="comments-container" aria-live="polite"></div>
+</div>
       </article>
 
       <article class="blog-post long" data-index="1"
@@ -472,9 +508,13 @@
                   ">
 
         <div class="blog-card">
-          <div class="post-image-wrapper">
-            <img src="Nira.jpg" alt="Open full Short Story Curse of Witch Nira cover image featuring a hand with nails and blood like liquid dropping down to a book thats on fire against black background">
-          </div>
+  <div class="post-image-wrapper">
+    <button class="open-lightbox" aria-label="Open full Short Story 'Curse of Witch Nira' cover image in a lightbox">
+      <img src="Nira.jpg" 
+           alt="Short Story 'Curse of Witch Nira' cover featuring a hand with long nails and blood-like liquid dropping onto a book that's on fire against a black background">
+    </button>
+  </div>
+</div>
           <h3>Short Story: Curse of Witch Nira</h3>
           <p><em>– LAJ, Feb 2026</em></p>
 
@@ -482,18 +522,26 @@
             there was a time, back when this world was a newborn, and the magic it carried from 
             worlds beyond was still wet on its skin. </p>
           <p><em>– LAJ, Summer 2025</em></p>
+<div class="post-actions">
+  <button class="love-btn" 
+          aria-pressed="false" 
+          aria-label="Love this post. 0 loves">
+    ❤️ Love (<span class="love-count" aria-live="polite">0</span>)
+  </button>
 
-          <div class="post-actions">
-            <button class="love-btn">❤️ Love (<span class="love-count">0</span>)</button>
-            <button class="toggle-comments">💬 Comments</button>
-          </div>
+  <button class="toggle-comments" 
+          aria-expanded="false" 
+          aria-controls="comment-section-1">
+    💬 Comments
+  </button>
+</div>
+      </article>
 
-          <div class="comment-section">
-            <textarea placeholder="Add a comment..."></textarea>
-            <button class="submit-comment">Submit</button>
-            <div class="comments-container"></div>
-          </div>
-        </div>
+<div id="comment-section-1" class="comment-section" hidden>
+  <textarea placeholder="Add a comment..." aria-label="Add a comment"></textarea>
+  <button class="submit-comment">Submit</button>
+  <div class="comments-container" aria-live="polite"></div>
+</div>
       </article>
 
       <article class="blog-post long" data-index="1"
@@ -664,10 +712,14 @@
                 <p>“We ready?” </p>
                 <p>They both nodded. She took a deep breath as she stared at the mountain with a smile. </p>
 
-        <div class="blog-card">
-          <div class="post-image-wrapper">
-            <img src="IHOK.jpg" alt="Click to open full IHOK Prologue cover of the sun blazing in all white bright light with a mountain hidden in the shadows in the foreground">
-          </div>
+       <div class="blog-card">
+  <div class="post-image-wrapper">
+    <button class="open-lightbox" aria-label="Open full IHOK Prologue cover image in a lightbox">
+      <img src="IHOK.jpg" 
+           alt="IHOK Prologue cover featuring the sun blazing in bright white light with a mountain hidden in the shadows in the foreground">
+    </button>
+  </div>
+</div>
           <h3>WIP/IHOK: Prologue </h3>
           <p>“Mama?” </p>
           <p> Hearing his voice for the first time after a long stint of silence, she quickly met the eyes of 
@@ -677,17 +729,25 @@
           <p><em>– LAJ, 2025-2026</em></p>
 
           <div class="post-actions">
-            <button class="love-btn">❤️ Love (<span class="love-count">0</span>)</button>
-            <button class="toggle-comments">💬 Comments</button>
-          </div>
+  <button class="love-btn" 
+          aria-pressed="false" 
+          aria-label="Love this post. 0 loves">
+    ❤️ Love (<span class="love-count" aria-live="polite">0</span>)
+  </button>
 
-          <div class="comment-section">
-            <textarea placeholder="Add a comment..."></textarea>
-            <button class="submit-comment">Submit</button>
-            <div class="comments-container"></div>
-          </div>
-        </div>
+  <button class="toggle-comments" 
+          aria-expanded="false" 
+          aria-controls="comment-section-1">
+    💬 Comments
+  </button>
+</div>
       </article>
+
+<div id="comment-section-1" class="comment-section" hidden>
+  <textarea placeholder="Add a comment..." aria-label="Add a comment"></textarea>
+  <button class="submit-comment">Submit</button>
+  <div class="comments-container" aria-live="polite"></div>
+</div>
 
     </div>
   </section>
