@@ -253,6 +253,17 @@ window.addEventListener('resize', () => {
   `;
 }
 
+let lastIsMobile = window.innerWidth <= 768;
+
+window.addEventListener('resize', () => {
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile !== lastIsMobile) {
+    lastIsMobile = isMobile;
+    if (wcIsOpen) {
+      renderSpread(false); // Re-render current spread for new layout
+    }
+  }
+});
         function nextSpread() {
           const book = wcBooks[wcCurrentBookIndex];
           const maxSpreads = Math.ceil(book.pages.length / 2);
