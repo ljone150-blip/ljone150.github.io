@@ -831,6 +831,17 @@ body.lightbox-open {
   opacity: 1;
 }
 
+.open-lightbox:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+.open-lightbox:focus-visible {
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
+  box-shadow: 0 0 4px #005fcc;
+}
+
 /* -------------------------
    FADE TEXT HIGHLIGHT
 --------------------------*/
