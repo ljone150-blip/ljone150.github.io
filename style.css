@@ -275,37 +275,6 @@ p, .writers-subtitle {
   color: #3a3a3a;
 }
 
-/* ===========================
-   UPCOMING RELEASES TABLE MOBILE FIX
-=========================== */
-@media (max-width: 768px) {
-  #upcoming-table {
-    width: 95%;
-    margin: 20px auto;
-  }
-
-  #upcoming-table th:first-child,
-  #upcoming-table td:first-child {
-    width: 100%; /* Make title + cover cells full width */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .cover-wrapper img {
-    width: 150px; /* Smaller for mobile */
-    max-width: 80%;
-    height: auto;
-    margin: 0 auto;
-  }
-
-  #upcoming-table th,
-  #upcoming-table td {
-    padding: 15px 5px;
-  }
-}
 
 /* -------------------------
    ARC FORM PAGE
