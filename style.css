@@ -823,12 +823,13 @@ body.lightbox-open {
   }
 }
 
-/* Focus style for long post images — tighter box around image for accessibility */
-.long .post-image-wrapper:focus-visible,
-.long img:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.8);
-  border-radius: 6px;
+/* ===========================
+   Focus style for long post images
+=========================== */
+.wc-page-wrapper img:focus {
+  outline: 2px solid #ffcc00; /* subtle highlight color */
+  outline-offset: 4px;        /* snug but not flush to image */
+  border-radius: 4px;         /* optional: round the corners slightly */
 }
 
 /* ===========================
