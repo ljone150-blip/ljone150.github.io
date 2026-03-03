@@ -322,6 +322,10 @@ p, .writers-subtitle {
   }
 }
 
+#upcoming-table tbody tr td:first-child {
+  border: none; /* remove any leftover border from first cell */
+}
+
 /* -------------------------
    ARC FORM PAGE
 --------------------------*/
