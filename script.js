@@ -1,4 +1,4 @@
-/* ===========================
+okay here is my current JS, where do i put that? : /* ===========================
    GLOBAL VARIABLES
 =========================== */
 const fadeElements = document.querySelectorAll('.fade-in');
@@ -386,7 +386,31 @@ window.addEventListener('resize', () => {
           };
         }).filter(Boolean);
 
-      
+      const showPage = (index) => {
+
+        const bookData = currentBookData[index];
+        if (!bookData) return;
+
+        let synopsis = bookData.synopsis
+          .replace(/her name/g,
+            '<span class="highlight">her name</span>')
+          .replace(/his purpose/g,
+            '<span class="highlight">his purpose</span>');
+
+        bookPagesWrapper.innerHTML = `
+          <div class="book-page">
+            <div class="book-left">
+              <img src="${bookData.imgSrc}" alt="${bookData.title}">
+            </div>
+            <div class="book-right">
+              <div class="book-synopsis centered">${synopsis}</div>
+            </div>
+          </div>
+        `;
+
+        upCurrentIndex = index;
+      };
+
       /* -------- Keyboard Support -------- */
       function handleUpKeydown(e) {
         if (!upIsOpen) return;
