@@ -386,53 +386,39 @@ window.addEventListener('resize', () => {
           };
         }).filter(Boolean);
 
-      const showPage = (index) => {
+    /* =========================
+   Show Page (Desktop + Mobile)
+========================= */
+const showPage = (index) => {
   const bookData = currentBookData[index];
   if (!bookData) return;
 
   const isMobile = window.innerWidth <= 768;
 
   // Highlight key phrases
-  const synopsis = bookData.synopsis
+  let synopsis = bookData.synopsis
     .replace(/her name/g, '<span class="highlight">her name</span>')
     .replace(/his purpose/g, '<span class="highlight">his purpose</span>');
 
-  // Mobile flip feature
   if (isMobile) {
-
-    // Initialize mobile page index if undefined
+    // Mobile: flip between cover and synopsis
     if (typeof bookData.mobilePageIndex === 'undefined') bookData.mobilePageIndex = 0;
 
     if (bookData.mobilePageIndex === 0) {
-      // Cover page
       bookPagesWrapper.innerHTML = `
         <div class="book-page mobile-cover">
           <img src="${bookData.imgSrc}" alt="${bookData.title}">
         </div>
       `;
     } else {
-      // Synopsis page (scrollable)
       bookPagesWrapper.innerHTML = `
         <div class="book-page mobile-synopsis" style="overflow-y: auto; max-height: 80vh; padding: 1rem;">
           <div class="book-synopsis centered">${synopsis}</div>
         </div>
       `;
     }
-
-    // Update arrows for mobile
-    nextBtn.onclick = () => {
-      bookData.mobilePageIndex = (bookData.mobilePageIndex + 1) % 2;
-      showPage(index);
-    };
-    prevBtn.onclick = () => {
-      bookData.mobilePageIndex = (bookData.mobilePageIndex - 1 + 2) % 2;
-      showPage(index);
-    };
-
-    upCurrentIndex = index;
-
   } else {
-    // Desktop: side-by-side layout
+    // Desktop: side-by-side
     bookPagesWrapper.innerHTML = `
       <div class="book-page">
         <div class="book-left">
@@ -443,101 +429,74 @@ window.addEventListener('resize', () => {
         </div>
       </div>
     `;
-
-    upCurrentIndex = index;
-
-    // Arrows go to next/prev book
-    nextBtn.onclick = () =>
-      showPage((upCurrentIndex + 1) % currentBookData.length);
-    prevBtn.onclick = () =>
-      showPage((upCurrentIndex - 1 + currentBookData.length) % currentBookData.length);
   }
+
+  upCurrentIndex = index;
 };
-      /* -------- Keyboard Support -------- */
-      function handleUpKeydown(e) {
-        if (!upIsOpen) return;
 
-        if (e.key === 'ArrowRight')
-          showPage((upCurrentIndex + 1) % currentBookData.length);
+/* -------- Cover Clicks & Arrow Behavior -------- */
+coverWrappers.forEach((wrapper, index) => {
 
-        if (e.key === 'ArrowLeft')
-          showPage((upCurrentIndex - 1 + currentBookData.length) %
-            currentBookData.length);
+  wrapper.addEventListener('click', () => {
+    const bookData = currentBookData[index];
 
-        if (e.key === 'Escape')
-          closeLightbox();
+    // Initialize mobilePageIndex for mobile
+    if (window.innerWidth <= 768) bookData.mobilePageIndex = 0;
+
+    // Show first page
+    showPage(index);
+
+    lightbox.style.opacity = 0;
+    lightbox.style.display = 'flex';
+    document.body.classList.add('lightbox-open');
+
+    requestAnimationFrame(() => {
+      lightbox.style.transition = 'opacity 0.3s ease';
+      lightbox.style.opacity = 1;
+    });
+
+    upIsOpen = true;
+    document.addEventListener('keydown', handleUpKeydown);
+
+    // Arrow buttons
+    nextBtn.onclick = () => {
+      if (window.innerWidth <= 768) {
+        // Mobile: flip page
+        bookData.mobilePageIndex = (bookData.mobilePageIndex + 1) % 2;
+        showPage(index);
+      } else {
+        // Desktop: next book
+        showPage((upCurrentIndex + 1) % currentBookData.length);
       }
+    };
 
-      const closeLightbox = () => {
+    prevBtn.onclick = () => {
+      if (window.innerWidth <= 768) {
+        bookData.mobilePageIndex = (bookData.mobilePageIndex - 1 + 2) % 2;
+        showPage(index);
+      } else {
+        showPage((upCurrentIndex - 1 + currentBookData.length) % currentBookData.length);
+      }
+    };
+  });
 
-        lightbox.style.transition = 'opacity 0.3s ease';
-        lightbox.style.opacity = 0;
+  // Hover label
+  const hoverLabel = document.createElement('div');
+  hoverLabel.className = 'cover-hover-label';
+  hoverLabel.innerText = 'Click for more';
 
-        lightbox.addEventListener('transitionend', function handler() {
-          lightbox.style.display = 'none';
-          document.body.classList.remove('lightbox-open');
-          lightbox.removeEventListener('transitionend', handler);
-        });
+  wrapper.style.position = 'relative';
+  wrapper.appendChild(hoverLabel);
 
-        upIsOpen = false;
-        document.removeEventListener('keydown', handleUpKeydown);
-      };
+  wrapper.addEventListener('mouseenter', () => {
+    hoverLabel.style.opacity = 1;
+  });
 
-      coverWrappers.forEach((wrapper, index) => {
-
-        wrapper.addEventListener('click', () => {
-
-          showPage(index);
-
-          lightbox.style.opacity = 0;
-          lightbox.style.display = 'flex';
-          document.body.classList.add('lightbox-open');
-
-          requestAnimationFrame(() => {
-            lightbox.style.transition = 'opacity 0.3s ease';
-            lightbox.style.opacity = 1;
-          });
-
-          upIsOpen = true;
-          document.addEventListener('keydown', handleUpKeydown);
-        });
-
-        const hoverLabel = document.createElement('div');
-        hoverLabel.className = 'cover-hover-label';
-        hoverLabel.innerText = 'Click for more';
-
-        wrapper.style.position = 'relative';
-        wrapper.appendChild(hoverLabel);
-
-        wrapper.addEventListener('mouseenter', () => {
-          hoverLabel.style.opacity = 1;
-        });
-
-        wrapper.addEventListener('mouseleave', () => {
-          hoverLabel.style.opacity = 0;
-        });
-      });
-
-      closeBtn.addEventListener('click', closeLightbox);
-
-      lightbox.addEventListener('click', e => {
-        if (e.target === lightbox) closeLightbox();
-      });
-
-      prevBtn.addEventListener('click', () =>
-        showPage((upCurrentIndex - 1 + currentBookData.length) %
-          currentBookData.length)
-      );
-
-      nextBtn.addEventListener('click', () =>
-        showPage((upCurrentIndex + 1) %
-          currentBookData.length)
-      );
-
-    })();
-  }
-});
-
+  wrapper.addEventListener('mouseleave', () => {
+    hoverLabel.style.opacity = 0;
+  });
+});  
+      
 /* ===========================
    LOVE BUTTONS
 =========================== */
