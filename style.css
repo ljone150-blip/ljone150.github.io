@@ -878,22 +878,14 @@ body.lightbox-open {
 }
 
 /* =====================================================
-   WRITERS CORNER – TRUE 3D BOOK MODE (UPGRADE)
-   Desktop: Two-page spread
-   Mobile: Single page
+   WRITERS CORNER – BOOK MODE
 ===================================================== */
 
-/* --- Override old layout --- */
-#wc-lightbox .book-page {
-  display: none !important;
-}
-
-/* --- Perspective Container --- */
+/* --- Perspective Wrapper --- */
 #wc-lightbox .book-page-wrapper {
   perspective: 2000px;
   width: 100%;
   height: 100%;
-  padding: 0;
 }
 
 /* --- Book Container --- */
@@ -905,13 +897,12 @@ body.lightbox-open {
   margin: auto;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(.25,.8,.25,1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Cinematic scaling on very large screens */
+/* Large screens */
 @media (min-width: 1400px) {
   #wc-lightbox .wc-book {
     max-width: 1250px;
@@ -933,7 +924,7 @@ body.lightbox-open {
   position: relative;
 }
 
-/* Center gutter shadow */
+/* Center gutter */
 #wc-lightbox .wc-spread::after {
   content: "";
   position: absolute;
@@ -946,17 +937,16 @@ body.lightbox-open {
   pointer-events: none;
 }
 
-/* --- Individual Pages --- */
+/* --- Pages --- */
 #wc-lightbox .wc-page {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow: visible;
   background: url('paper-texture.png') repeat;
 }
 
-/* --- Cover Page Styling --- */
+/* --- Cover Page --- */
 #wc-lightbox .cover-page {
   align-items: center;
   justify-content: center;
@@ -973,13 +963,13 @@ body.lightbox-open {
 }
 
 #wc-lightbox .cover-page h2 {
-  font-family: "Times New Roman", serif; cursive; 
-  text-transform: uppercase;   
+  font-family: "Times New Roman", serif;
+  text-transform: uppercase;
   font-size: 2.2rem;
   margin-top: 10px;
 }
 
-/* --- Text Page Styling --- */
+/* --- Text Page --- */
 #wc-lightbox .text-page {
   font-family: Georgia, serif;
   font-size: 1.5rem;
@@ -987,61 +977,52 @@ body.lightbox-open {
   color: var(--ink);
 }
 
+/* Inner content */
 #wc-lightbox .wc-page-inner {
-  padding: 60px; 55px;
-  line-height: 1.9;
+  padding: 60px 55px;   /* FIXED BROKEN RULE */
   overflow-y: auto;
 }
 
-/* Reset text styling inside lightbox */
-#wc-lightbox .wc-page-inner,
-#wc-lightbox .book-synopsis {
-  font-style: normal;      /* removes italics */
-  font-weight: 400;        /* normal weight */
-  font-family: Georgia, serif;  /* ensure serif font */
-  color: var(--ink);       /* ensures correct color */
-}
-
-/* Writers Corner Lightbox - Book-style paragraph formatting */
+/* Paragraph formatting */
 #wc-lightbox .text-page p {
-    text-indent: 2em;      /* classic book-style first line indent */
-    margin-bottom: 1.2em;  /* space between paragraphs */
-    line-height: 1.8;      /* slightly taller line-height for readability */
+  text-indent: 2em;
+  margin-bottom: 1.2em;
+  line-height: 1.8;
 }
 
-/* --- 3D Flip Animations --- */
+/* --- Flip Animation --- */
 #wc-lightbox .flip-next {
-  animation: wcFlipNext 0.8s ease forwards;
+  animation: wcFlipNext 0.6s ease forwards;
 }
 
 #wc-lightbox .flip-prev {
-  animation: wcFlipPrev 0.8s ease forwards;
+  animation: wcFlipPrev 0.6s ease forwards;
 }
 
 @keyframes wcFlipNext {
   0% { transform: rotateY(0deg); }
-  50% { transform: rotateY(-15deg); }
+  50% { transform: rotateY(-12deg); }
   100% { transform: rotateY(0deg); }
 }
 
 @keyframes wcFlipPrev {
   0% { transform: rotateY(0deg); }
-  50% { transform: rotateY(15deg); }
+  50% { transform: rotateY(12deg); }
   100% { transform: rotateY(0deg); }
 }
 
 /* =====================================================
-   RESPONSIVE – TABLET
+   RESPONSIVE
 ===================================================== */
+
+/* Tablet */
 @media (max-width: 1000px) {
-  #wc-lightbox .wc-page {
+  #wc-lightbox .wc-page-inner {
     padding: 40px 35px;
   }
 }
 
-/* =====================================================
-   MOBILE – SINGLE PAGE MODE
-===================================================== */
+/* Mobile */
 @media (max-width: 768px) {
 
   #wc-lightbox .wc-spread {
@@ -1049,22 +1030,18 @@ body.lightbox-open {
   }
 
   #wc-lightbox .wc-spread::after {
-    display: none; /* remove gutter */
+    display: none;
   }
 
   #wc-lightbox .wc-page {
     width: 100%;
-    height: 100%;
-    padding: 30px 25px;
   }
 
-  /* Hide left page entirely */
   #wc-lightbox .wc-page:first-child {
     display: none;
   }
 
   #wc-lightbox .text-page {
-    font-size: 0.95rem;
-    line-height: 1.8;
+    font-size: 1rem;
   }
 }
