@@ -322,18 +322,6 @@ p, .writers-subtitle {
   }
 }
 
-.book-page.mobile-synopsis {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.book-page.mobile-synopsis .book-synopsis {
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-}
 /* -------------------------
    ARC FORM PAGE
 --------------------------*/
