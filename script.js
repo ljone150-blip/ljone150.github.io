@@ -455,26 +455,49 @@ document.addEventListener('DOMContentLoaded', () => {
    LOVE BUTTONS
 =========================== */
 document.querySelectorAll('.love-btn').forEach(btn => {
+  const count = btn.querySelector('.love-count');
+  if (count) count.setAttribute('aria-live', 'polite'); // Announce changes
+
+  btn.setAttribute('aria-pressed', 'false'); // Initial state
+  btn.setAttribute('aria-label', 'Love this post'); // Screen reader description
+
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const count = btn.querySelector('.love-count');
+
+    // Increment count
     if (!count) return;
     count.textContent = parseInt(count.textContent) + 1;
+
+    // Toggle pressed state
+    const isPressed = btn.getAttribute('aria-pressed') === 'true';
+    btn.setAttribute('aria-pressed', String(!isPressed));
   });
 });
 
 /* ===========================
    COMMENT TOGGLE
 =========================== */
-document.querySelectorAll('.toggle-comments').forEach(btn => {
+document.querySelectorAll('.toggle-comments').forEach((btn, index) => {
+  const post = btn.closest('.blog-post');
+  if (!post) return;
+  const commentSection = post.querySelector('.comment-section');
+  if (!commentSection) return;
+
+  // Assign unique id if none exists
+  if (!commentSection.id) commentSection.id = `comments-${index}`;
+
+  btn.setAttribute('aria-controls', commentSection.id);
+  btn.setAttribute('aria-expanded', 'false');
+  commentSection.setAttribute('aria-live', 'polite');
+  commentSection.style.display = 'none'; // hide initially
+
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const post = btn.closest('.blog-post');
-    if (!post) return;
-    const commentSection = post.querySelector('.comment-section');
-    if (!commentSection) return;
-    commentSection.style.display =
-      commentSection.style.display === 'block' ? 'none' : 'block';
+
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isExpanded));
+
+    commentSection.style.display = isExpanded ? 'none' : 'block';
   });
 });
 
@@ -497,8 +520,10 @@ document.querySelectorAll('.submit-comment').forEach(btn => {
 
     const comment = document.createElement('p');
     comment.innerHTML = text;
-
+    comment.tabIndex = -1; // Make it focusable
     container.appendChild(comment);
+    comment.focus(); // Screen reader announces new comment
+
     textarea.value = '';
   });
 });
