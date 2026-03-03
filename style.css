@@ -1,3 +1,6 @@
+/* =====================================================
+   VARIABLES
+===================================================== */
 :root {
   --ink: #1a1a1a;
   --paper: #f2efe9;
@@ -7,6 +10,9 @@
   --heritage-gold: #b89b5e;
 }
 
+/* =====================================================
+   GLOBAL RESET & TYPOGRAPHY
+===================================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -17,13 +23,13 @@ body {
   line-height: 1.6;
 }
 
-.center-title {
-  text-align: center;
-}
+.center-title { text-align: center; }
 
-/* -------------------------
+[hidden] { display: none !important; } /* ensures ARIA hidden sections do not occupy space */
+
+/* =====================================================
    NAVIGATION
---------------------------*/
+===================================================== */
 header { position: sticky; top: 0; z-index: 100; }
 
 nav ul {
@@ -64,9 +70,9 @@ nav a:hover::after {
   left: 0;
 }
 
-/* -------------------------
+/* =====================================================
    HERO / INTRO VIDEOS
---------------------------*/
+===================================================== */
 .intro-video, .hero-video { position: relative; height: 100vh; overflow: hidden; }
 
 .intro-video video, .hero-video video {
@@ -101,7 +107,7 @@ nav a:hover::after {
 }
 
 .intro-overlay h1, .hero-overlay h1 {
-  font-family: 'Montserrat',  cursive;
+  font-family: 'Montserrat', cursive;
   font-size: 4rem;
   letter-spacing: 3px;
   margin-bottom: 10px;
@@ -116,11 +122,11 @@ nav a:hover::after {
   opacity: 0.9;
 }
 
-/* -------------------------
-   SECTION HEADERS About & Featured Books
---------------------------*/
+/* =====================================================
+   SECTION HEADERS
+===================================================== */
 h2, .writers-title {
-  font-family: "Times New Roman", serif; cursive; 
+  font-family: "Times New Roman", serif;
   text-transform: uppercase;    
   font-size: 2.5rem;
   color: #3a3a3a;
@@ -136,9 +142,9 @@ p, .writers-subtitle {
   margin-bottom: 20px;
 }
 
-/* -------------------------
+/* =====================================================
    ABOUT / FLOATING ART GALLERY
---------------------------*/
+===================================================== */
 .about {
   display: flex;
   justify-content: center;
@@ -157,9 +163,9 @@ p, .writers-subtitle {
 
 .about-text { max-width: 650px; }
 
-/* -------------------------
-   FEATURED BOOKS / GRID
---------------------------*/
+/* =====================================================
+   FEATURED BOOKS GRID
+===================================================== */
 .section-card.slide-up {
   background: none;
   padding: 60px 20px;
@@ -168,7 +174,7 @@ p, .writers-subtitle {
 
 .section-card.slide-up h2 {
   text-align: center;
-  font-family: "Times New Roman", serif; cursive; 
+  font-family: "Times New Roman", serif;
   text-transform: uppercase;   
   font-size: 3.2rem;
   margin-bottom: 50px;
@@ -201,9 +207,9 @@ p, .writers-subtitle {
   box-shadow: 0 70px 150px rgba(0,0,0,0.6);
 }
 
-/* -------------------------
+/* =====================================================
    UPCOMING RELEASES TABLE
---------------------------*/
+===================================================== */
 #upcoming-table {
   width: 85%;
   max-width: 1000px;
@@ -255,9 +261,9 @@ p, .writers-subtitle {
   color: #3a3a3a;
 }
 
-/* -------------------------
+/* =====================================================
    ARC FORM PAGE
---------------------------*/
+===================================================== */
 .arc-card {
   max-width: 700px;
   margin: 2rem auto;
@@ -293,61 +299,43 @@ p, .writers-subtitle {
 
 #arcRequestForm button:hover { background-color: #553c9a; }
 
-/* -------------------------
-   WRITER'S CORNER GRID & POSTS
---------------------------*/
+/* =====================================================
+   WRITER'S CORNER BLOG GRID
+===================================================== */
 .writers-page .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-auto-rows: 10px; /* FIXED ROW HEIGHT for masonry calculation */
+  grid-auto-rows: 10px;
   gap: 30px;
   max-width: 1200px;
   width: 95%;
   margin: 0 auto 100px;
-  transition: all 0.3s ease; /* smooth row adjustment */
+  transition: all 0.3s ease;
 }
 
 .writers-page .blog-post {
   background: #ffffff;
   padding: 20px;
-  padding-bottom: 15px !important;
   border-radius: 8px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  overflow: hidden; /* important for Read More */
-  align-self: start;  /* prevent stretching */
+  overflow: hidden;
+  align-self: start;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
-/* Hover effect */
 .writers-page .blog-post:hover {
   transform: translateY(-5px);
   box-shadow: 0 35px 80px rgba(0,0,0,0.15);
 }
 
-.writers-page .blog-post .post-date {
-  font-size: 0.85rem;
-  color: #888888;
-  margin-bottom: 8px;
-  font-style: italic;
-}
-
-.writers-page .post-image-wrapper img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
-}
-
-.writers-page .blog-post:hover .post-image-wrapper img {
-  transform: scale(1.03);
-}
-
 .writers-page .blog-post h3 {
-  font-family: 'Serif', 
+  font-family: 'Serif';
   font-size: 1.4rem;
   margin-bottom: 10px;
 }
@@ -358,20 +346,20 @@ p, .writers-subtitle {
   margin-bottom: 10px;
 }
 
-/* -------------------------
-   SHORT POST READ MORE WRAPPER
---------------------------*/
+/* Short post preview */
 .writers-page .short-preview-wrapper {
-  max-height: 120px; /* collapsed height */
-  overflow: hidden;  /* keep grid snapping */
+  max-height: 120px;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
   transition: max-height 0.3s ease;
 }
 
 .writers-page .short-preview-wrapper.expanded {
-  overflow: visible; /* full content allowed */
+  overflow: visible;
 }
 
-/* Read More button styling */
+/* Read More button */
 .writers-page .read-more-btn {
   cursor: pointer;
   color: var(--heritage-gold);
@@ -386,13 +374,9 @@ p, .writers-subtitle {
   transition: color 0.3s ease;
 }
 
-.writers-page .read-more-btn:hover {
-  color: darkgoldenrod;
-}
+.writers-page .read-more-btn:hover { color: darkgoldenrod; }
 
-/* -------------------------
-   LOVE BUTTONS & COMMENT BOX
---------------------------*/
+/* Post actions */
 .writers-page .post-actions {
   display: flex;
   gap: 15px;
@@ -408,10 +392,9 @@ p, .writers-subtitle {
   transition: color 0.3s ease;
 }
 
-.writers-page .post-actions button:hover {
-  color: var(--heritage-gold);
-}
+.writers-page .post-actions button:hover { color: var(--heritage-gold); }
 
+/* Comments */
 .writers-page .comment-section {
   display: none;
   margin-top: 10px;
@@ -443,16 +426,14 @@ p, .writers-subtitle {
   font-size: 0.9rem;
 }
 
-/* -------------------------
-   SCROLL ANIMATIONS
---------------------------*/
+/* Fade / slide animations */
 .fade-in { opacity: 0; transform: translateY(40px); transition: all 1s ease; }
 .slide-up { opacity: 0; transform: translateY(60px); transition: all 1s ease; }
 .visible { opacity: 1; transform: translateY(0); }
 
-/* -------------------------
-   UPCOMING PAGE LIGHTBOX
---------------------------*/
+/* =====================================================
+   LIGHTBOX #lightbox (UPCOMING RELEASES)
+===================================================== */
 #lightbox {
   display: none;
   position: fixed;
@@ -493,123 +474,178 @@ p, .writers-subtitle {
   gap: 40px;
 }
 
-#lightbox .book-left {
+#lightbox .book-left, #lightbox .book-right {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#lightbox .book-left img {
-  max-width: 100%;
-  max-height: 75vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.3);
-}
-
 #lightbox .book-right {
-  flex: 1;
   background: url('paper-texture.png') repeat;
   padding: 30px;
   overflow-y: auto;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-#lightbox .book-synopsis {
+#lightbox .book-right .book-synopsis {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--ink);
-}
-
-#lightbox .nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2.5rem;
-  color: var(--ink);
-  cursor: pointer;
-  padding: 10px;
-  user-select: none;
-}
-#lightbox .prev { left: 10px; }
-#lightbox .next { right: 10px; }
-#lightbox .nav:hover { opacity: 0.7; }
-
-#lightbox .close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2.5rem;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-/* Center synopsis text and allow scrolling */
-#lightbox .book-right .book-synopsis.centered {
-  text-align: center;
+  white-space: pre-line;
   overflow-y: auto;
-  max-height: 75vh; /* ensures scrolling */
-  white-space: pre-line; /* preserves line breaks */
-  padding-right: 10px; /* for scrollbar spacing */
+  max-height: 75vh;
+  padding-right: 10px;
 }
 
-/* Highlight specific phrases */
-.highlight {
-  color: #f86063;
-  font-weight: bold;
+#lightbox .nav, #lightbox .close {
+  font-size: 2.5rem;
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
 }
 
-/* Hover label on covers */
-.cover-wrapper .cover-hover-label {
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255,255,255,0.85);
-  color: #000;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-family: Georgia, serif;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+#lightbox .prev { left: 10px; position: absolute; top: 50%; transform: translateY(-50%); }
+#lightbox .next { right: 10px; position: absolute; top: 50%; transform: translateY(-50%); }
+#lightbox .close { top: 15px; right: 20px; position: absolute; }
+
+/* =====================================================
+   WRITERS CORNER LIGHTBOX #wc-lightbox
+===================================================== */
+#wc-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(242, 239, 233, 0.95);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.cover-wrapper:hover .cover-hover-label {
-  opacity: 1;
+/* 3D Book Container */
+#wc-lightbox .book-page-wrapper {
+  perspective: 2000px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
 }
 
-/* ===========================
-   GLOBAL LIGHTBOX SCROLL LOCK
-=========================== */
-body.lightbox-open {
+#wc-lightbox .wc-book {
+  width: 95%;
+  max-width: 1100px;
+  height: 85vh;
+  max-height: 800px;
+  margin: auto;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(.25,.8,.25,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#wc-lightbox .wc-spread {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: var(--paper);
+  border-radius: 10px;
   overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.06), 0 50px 140px rgba(0,0,0,0.4);
 }
 
-/* -------------------------
-   RESPONSIVE
---------------------------*/
-@media (max-width:1000px) {
-  .book-grid { flex-wrap: wrap; justify-content: center; }
-  .about { flex-direction: column; align-items: center; gap: 30px; }
-  .section-card.slide-up h2 { font-size: 2.5rem; margin-bottom: 30px; }
-  .book { width: 180px; height: 280px; }
+#wc-lightbox .wc-spread::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at center, rgba(0,0,0,0.15), transparent 70%);
+  pointer-events: none;
 }
 
-@media (max-width:700px) {
-  .writers-page .blog-grid { grid-template-columns: 1fr; gap: 25px; }
-  .wc-book-container { width: 95%; height: 500px; }
-  .wc-book-page { padding: 25px; font-size: 0.95rem; }
-  .intro-overlay h1, .hero-overlay h1 { font-size: 3rem; }
-  nav ul { flex-direction: column; padding: 10px; }
-  nav a { margin: 10px 0; }
+/* Individual pages inside 3D book */
+#wc-lightbox .wc-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: visible;
+  background: url('paper-texture.png') repeat;
+  padding: 0;
 }
 
-/* -------------------------
-   FOOTER
---------------------------*/
+#wc-lightbox .cover-page {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#wc-lightbox .cover-page img {
+  max-width: 85%;
+  max-height: 85%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.4);
+  margin-bottom: 25px;
+}
+
+#wc-lightbox .cover-page h2 {
+  font-family: "Times New Roman", serif; 
+  text-transform: uppercase;   
+  font-size: 2.2rem;
+  margin-top: 10px;
+}
+
+#wc-lightbox .text-page {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.9;
+  color: var(--ink);
+}
+
+#wc-lightbox .wc-page-inner {
+  padding: 60px;
+  line-height: 1.9;
+  overflow-y: auto;
+}
+
+#wc-lightbox .text-page p {
+  text-indent: 2em;
+  margin-bottom: 1.2em;
+  line-height: 1.8;
+}
+
+/* 3D Flip Animations */
+#wc-lightbox .flip-next { animation: wcFlipNext 0.8s ease forwards; }
+#wc-lightbox .flip-prev { animation: wcFlipPrev 0.8s ease forwards; }
+
+@keyframes wcFlipNext {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(-15deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+@keyframes wcFlipPrev {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(15deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+/* =====================================================
+   GLOBAL LIGHTBOX SCROLL LOCK
+===================================================== */
+body.lightbox-open { overflow: hidden; }
+
+/* =====================================================
+   FOOTER & SOCIAL ICONS
+===================================================== */
 footer {
   text-align: center;
   padding: 20px 0;
@@ -635,416 +671,25 @@ footer {
   opacity: 0.8;
 }
 
-/* Hide empty image wrapper only on writers page to remove extra space */
-.writers-page .post-image-wrapper:empty {
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Remove bottom margin on last paragraph inside blog cards */
-.writers-page .blog-card p:last-child {
-  margin-bottom: 0 !important;
-}
-
-/* ===========================
-   WRITERS CORNER LIGHTBOX - BOOK STYLE
-=========================== */
-#wc-lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(242, 239, 233, 0.95);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-#wc-lightbox .book-container {
-  position: relative;
-  width: 90vw;
-  max-width: 1000px;
-  max-height: 90vh;
-  background: var(--paper);
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.4);
-  /* optional: subtle page shadow to mimic real book */
-  box-shadow: inset 0 0 50px rgba(0,0,0,0.05), 0 40px 120px rgba(0,0,0,0.4);
-}
-
-#wc-lightbox .book-page-wrapper {
-  width: 100%;
-  height: 100%;
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#wc-lightbox .book-page {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  gap: 40px;
-  background: var(--paper);
-}
-
-#wc-lightbox .book-left {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#wc-lightbox .book-left img {
-  max-width: 100%;
-  max-height: 75vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.3);
-}
-
-#wc-lightbox .book-right {
-  flex: 1;
-  background: url('paper-texture.png') repeat;
-  padding: 40px 35px;
-  overflow: hidden; /* remove scrolling */
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-/* Book text styling */
-#wc-lightbox .book-synopsis {
-  font-size: 1 rem;
-  line-height: 1.8;
-  color: var(--ink);
-  font-family: "Georgia", serif;
-  white-space: pre-wrap; /* preserve paragraphs and line breaks */
-  text-indent: 1.2em; /* indent first line of paragraphs */
-  margin-bottom: 1em;
-} 
-
-/* Dialogue indentation: add extra for quotes */
-#wc-lightbox .book-synopsis blockquote,
-#wc-lightbox .book-synopsis .dialogue {
-  margin-left: 3em;
-  margin-right: 1em;
-  font-style: italic;
-  line-height: 1.9;
-}
-
-/* Highlight specific phrases */
-#wc-lightbox .book-synopsis .highlight {
-  color: #f86063;
-  font-weight: bold;
-}
-
-/* Navigation buttons */
-#wc-lightbox .nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2.5rem;
-  color: var(--ink);
-  cursor: pointer;
-  padding: 10px;
-  user-select: none;
-  z-index: 10;
-}
-#wc-lightbox .prev { left: 10px; }
-#wc-lightbox .next { right: 10px; }
-#wc-lightbox .nav:hover { opacity: 0.7; }
-
-#wc-lightbox .close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2.5rem;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-/* Global lightbox scroll lock */
-body.lightbox-open {
-  overflow: hidden;
-}
-
-/* Responsive tweaks */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 @media (max-width:1000px) {
-  #wc-lightbox .book-page {
-    flex-direction: column;
-  }
-  #wc-lightbox .book-left, #wc-lightbox .book-right {
-    flex: none;
-    width: 100%;
-    height: auto;
-  }
-  #wc-lightbox .book-right {
-    padding: 25px;
-  }
+  .book-grid { flex-wrap: wrap; justify-content: center; }
+  .about { flex-direction: column; align-items: center; gap: 30px; }
+  .section-card.slide-up h2 { font-size: 2.5rem; margin-bottom: 30px; }
+  .book { width: 180px; height: 280px; }
+  #wc-lightbox .wc-page { padding: 40px 35px; }
+  #wc-lightbox .wc-spread { flex-direction: column; }
 }
 
 @media (max-width:700px) {
-  #wc-lightbox .book-page {
-    gap: 20px;
-  }
-  #wc-lightbox .book-right {
-    padding: 20px;
-  }
-  #wc-lightbox .book-synopsis {
-    font-size: 0.95rem;
-  }
-}
-
-/* ===========================
-   WRITERS CORNER "CLICK FOR MORE" HOVER LABEL
-=========================== */
-.writers-page .post-image-wrapper {
-  position: relative; /* ensure label is positioned correctly */
-}
-
-.writers-page .post-image-wrapper .cover-hover-label {
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.85);
-  color: #000;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-family: Georgia, serif;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 10; /* ensure label is above the image */
-}
-
-.writers-page .post-image-wrapper:hover .cover-hover-label {
-  opacity: 1;
-}
-
-
-/* -------------------------
-   FADE TEXT HIGHLIGHT
---------------------------*/
-.fade-text {
-  background: linear-gradient(90deg, #2887bf 0%, #a6a6a6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  font-weight: bold;
-}
-
-/* Ensure scrollable synopsis next to cover */
-#lightbox .book-right .book-synopsis {
-  overflow-y: auto;
-  max-height: 75vh; /* keeps it inside viewport */
-  padding-right: 10px; /* space for scrollbar */
-  line-height: 1.7;
-  white-space: pre-line; /* preserves line breaks */
-}
-
-/* Optional: center text if needed */
-#lightbox .book-right .book-synopsis.centered {
-  text-align: center;
-}
-
-/* =====================================================
-   WRITERS CORNER – TRUE 3D BOOK MODE (UPGRADE)
-   Desktop: Two-page spread
-   Mobile: Single page
-===================================================== */
-
-/* --- Override old layout --- */
-#wc-lightbox .book-page {
-  display: none !important;
-}
-
-/* --- Perspective Container --- */
-#wc-lightbox .book-page-wrapper {
-  perspective: 2000px;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-}
-
-/* --- Book Container --- */
-#wc-lightbox .wc-book {
-  width: 95%;
-  max-width: 1100px;
-  height: 85vh;
-  max-height: 800px;
-  margin: auto;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(.25,.8,.25,1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Cinematic scaling on very large screens */
-@media (min-width: 1400px) {
-  #wc-lightbox .wc-book {
-    max-width: 1250px;
-    height: 88vh;
-  }
-}
-
-/* --- Spread Layout --- */
-#wc-lightbox .wc-spread {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background: var(--paper);
-  border-radius: 10px;
-  box-shadow:
-    inset 0 0 60px rgba(0,0,0,0.06),
-    0 50px 140px rgba(0,0,0,0.4);
-  overflow: hidden;
-  position: relative;
-}
-
-/* Center gutter shadow */
-#wc-lightbox .wc-spread::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 40px;
-  transform: translateX(-50%);
-  background: radial-gradient(circle at center, rgba(0,0,0,0.15), transparent 70%);
-  pointer-events: none;
-}
-
-/* --- Individual Pages --- */
-#wc-lightbox .wc-page {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: visible;
-  background: url('paper-texture.png') repeat;
-}
-
-/* --- Cover Page Styling --- */
-#wc-lightbox .cover-page {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-#wc-lightbox .cover-page img {
-  max-width: 85%;
-  max-height: 85%;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 30px 90px rgba(0,0,0,0.4);
-  margin-bottom: 25px;
-}
-
-#wc-lightbox .cover-page h2 {
-  font-family: "Times New Roman", serif; cursive; 
-  text-transform: uppercase;   
-  font-size: 2.2rem;
-  margin-top: 10px;
-}
-
-/* --- Text Page Styling --- */
-#wc-lightbox .text-page {
-  font-family: Georgia, serif;
-  font-size: 1.5rem;
-  line-height: 1.9;
-  color: var(--ink);
-}
-
-#wc-lightbox .wc-page-inner {
-  padding: 60px; 55px;
-  line-height: 1.9;
-  overflow-y: auto;
-}
-
-/* Reset text styling inside lightbox */
-#wc-lightbox .wc-page-inner,
-#wc-lightbox .book-synopsis {
-  font-style: normal;      /* removes italics */
-  font-weight: 400;        /* normal weight */
-  font-family: Georgia, serif;  /* ensure serif font */
-  color: var(--ink);       /* ensures correct color */
-}
-
-/* Writers Corner Lightbox - Book-style paragraph formatting */
-#wc-lightbox .text-page p {
-    text-indent: 2em;      /* classic book-style first line indent */
-    margin-bottom: 1.2em;  /* space between paragraphs */
-    line-height: 1.8;      /* slightly taller line-height for readability */
-}
-
-/* --- 3D Flip Animations --- */
-#wc-lightbox .flip-next {
-  animation: wcFlipNext 0.8s ease forwards;
-}
-
-#wc-lightbox .flip-prev {
-  animation: wcFlipPrev 0.8s ease forwards;
-}
-
-@keyframes wcFlipNext {
-  0% { transform: rotateY(0deg); }
-  50% { transform: rotateY(-15deg); }
-  100% { transform: rotateY(0deg); }
-}
-
-@keyframes wcFlipPrev {
-  0% { transform: rotateY(0deg); }
-  50% { transform: rotateY(15deg); }
-  100% { transform: rotateY(0deg); }
-}
-
-/* =====================================================
-   RESPONSIVE – TABLET
-===================================================== */
-@media (max-width: 1000px) {
-  #wc-lightbox .wc-page {
-    padding: 40px 35px;
-  }
-}
-
-/* =====================================================
-   MOBILE – SINGLE PAGE MODE
-===================================================== */
-@media (max-width: 768px) {
-
-  #wc-lightbox .wc-spread {
-    flex-direction: column;
-  }
-
-  #wc-lightbox .wc-spread::after {
-    display: none; /* remove gutter */
-  }
-
-  #wc-lightbox .wc-page {
-    width: 100%;
-    height: 100%;
-    padding: 30px 25px;
-  }
-
-  /* Hide left page entirely */
-  #wc-lightbox .wc-page:first-child {
-    display: none;
-  }
-
-  #wc-lightbox .text-page {
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
+  .writers-page .blog-grid { grid-template-columns: 1fr; gap: 25px; }
+  .wc-book-container, #wc-lightbox .wc-page { width: 95%; height: auto; }
+  .wc-book-page { padding: 25px; font-size: 0.95rem; }
+  .intro-overlay h1, .hero-overlay h1 { font-size: 3rem; }
+  nav ul { flex-direction: column; padding: 10px; }
+  nav a { margin: 10px 0; }
+  #wc-lightbox .text-page { font-size: 0.95rem; line-height: 1.8; }
+  #wc-lightbox .wc-page:first-child { display: none; }
 }
