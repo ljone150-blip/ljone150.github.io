@@ -829,10 +829,14 @@ body.lightbox-open {
   outline: none;
 }
 
-.wc-page-wrapper img:focus-visible,
-.wc-page-wrapper .wc-page:focus-visible {
-  box-shadow: 0 0 0 2px #ffcc00;
-  border-radius: 4px;
+
+#wc-lightbox .book-page-wrapper img:focus {
+  outline: none;
+}
+
+
+#wc-lightbox .book-page-wrapper .wc-page:focus {
+  outline: none;
 }
 
 /* ===========================
