@@ -181,6 +181,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const book = wcBooks[wcCurrentBookIndex];
   if (!book) return;
 
+let lastIsMobile = window.innerWidth <= 768;
+
+window.addEventListener('resize', () => {
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile !== lastIsMobile) {
+    lastIsMobile = isMobile;
+    if (wcIsOpen) {
+      renderSpread(false); // Re-render current spread for new layout
+    }
+  }
+});
+           
   const isMobile = window.innerWidth <= 768; // Mobile breakpoint
   let leftContent = '';
   let rightContent = '';
