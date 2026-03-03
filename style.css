@@ -282,6 +282,7 @@ p, .writers-subtitle {
   #upcoming-table {
     width: 95%;
     margin: 20px auto;
+    border-collapse; 
   }
 
   #upcoming-table th:first-child,
