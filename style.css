@@ -275,6 +275,43 @@ p, .writers-subtitle {
   color: #3a3a3a;
 }
 
+/* ===========================
+   UPCOMING TABLE - MOBILE FIX
+=========================== */
+@media (max-width: 768px) {
+  #upcoming-table {
+    width: 95%;       /* narrower margin on mobile */
+    display: block;   /* allow wrapping */
+  }
+
+  #upcoming-table tr {
+    display: flex;
+    flex-direction: column; /* stack each row vertically */
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  #upcoming-table th, 
+  #upcoming-table td {
+    display: block;
+    width: 100%;
+    padding: 10px 5px; /* smaller padding on mobile */
+    text-align: center;
+  }
+
+  #upcoming-table th:first-child,
+  #upcoming-table td:first-child {
+    width: 100%; /* override fixed 40% width */
+  }
+
+  .cover-wrapper img {
+    width: 80%;       /* shrink images to fit mobile */
+    max-width: 250px; /* optional max to prevent huge images */
+    height: auto;
+    object-fit: cover;
+  }
+}
+
 /* -------------------------
    ARC FORM PAGE
 --------------------------*/
