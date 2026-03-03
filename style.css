@@ -823,13 +823,16 @@ body.lightbox-open {
   }
 }
 
-/* ===========================
-   Focus style for long post images
-=========================== */
-.wc-page-wrapper img:focus {
-  outline: 2px solid #ffcc00; /* subtle highlight color */
-  outline-offset: 4px;        /* snug but not flush to image */
-  border-radius: 4px;         /* optional: round the corners slightly */
+/* Writers Corner Lightbox / Book Section */
+.wc-page-wrapper img,
+.wc-page-wrapper .wc-page {
+  outline: none;
+}
+
+.wc-page-wrapper img:focus-visible,
+.wc-page-wrapper .wc-page:focus-visible {
+  box-shadow: 0 0 0 2px #ffcc00;
+  border-radius: 4px;
 }
 
 /* ===========================
