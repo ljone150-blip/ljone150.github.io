@@ -221,14 +221,16 @@ window.addEventListener('resize', () => {
     const leftText = book.pages[pageIndex] || '';
     const rightText = book.pages[pageIndex + 1] || '';
 
-    if (isMobile) {
-      // Mobile: merge left+right into one page
-      rightContent = `
-        <div class="wc-page text-page">
-          <div class="wc-page-inner">${leftText}${rightText}</div>
-        </div>
-      `;
-    } else {
+  if (isMobile) {
+  // Mobile: merge left+right into one page with scroll
+  rightContent = `
+    <div class="wc-page text-page" style="overflow-y: auto; max-height: 100vh;">
+      <div class="wc-page-inner" style="padding-bottom: 2rem;">
+        ${leftText}${rightText}
+      </div>
+    </div>
+  `;
+} else {
       // Desktop: left + right pages
       leftContent = `
         <div class="wc-page text-page">
