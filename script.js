@@ -1,4 +1,4 @@
-okay here is my current JS, where do i put that? : /* ===========================
+/* ===========================
    GLOBAL VARIABLES
 =========================== */
 const fadeElements = document.querySelectorAll('.fade-in');
