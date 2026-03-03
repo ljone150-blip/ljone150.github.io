@@ -829,11 +829,11 @@ body.lightbox-open {
   outline: none;
 }
 
-x/* Writers Corner: remove oversized focus box from long post images */
-.writers-page .blog-post.long:focus,
-.writers-page .blog-post.long *:focus,
-.writers-page .post-image-wrapper:focus {
-  outline: none !important;   /* remove default focus ring */
+/* Remove the visible focus box on long post images, but keep keyboard accessibility */
+.writers-page .blog-post.long .post-image-wrapper:focus,
+.writers-page .blog-post.long .post-image-wrapper:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 
