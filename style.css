@@ -311,6 +311,7 @@ p, .writers-subtitle {
    ARC FORM PAGE
 --------------------------*/
 .arc-card {
+  width: 90%; 
   max-width: 700px;
   margin: 2rem auto;
   padding: 2rem;
@@ -318,6 +319,33 @@ p, .writers-subtitle {
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   font-family: 'Helvetica', sans-serif;
+   box-sizing: border-box;
+}
+
+/* Smaller font & padding on very small screens */
+@media (max-width: 480px) {
+  .arc-card {
+    padding: 1rem;
+  }
+
+  #arcRequestForm input,
+  #arcRequestForm select,
+  #arcRequestForm textarea {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  #arcRequestForm button {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+}
+
+/* Reduce margin on smaller tablets/phones */
+@media (max-width: 768px) {
+  .arc-card {
+    margin: 1rem auto;
+  }
 }
 
 .arc-card h2.center, .arc-card p.center { text-align: center; margin-bottom: 1rem; }
