@@ -276,37 +276,51 @@ p, .writers-subtitle {
 }
 
 /* ===========================
-   UPCOMING RELEASES TABLE MOBILE FIX
+   UPCOMING RELEASES TABLE MOBILE FIX v2
 =========================== */
 @media (max-width: 768px) {
   #upcoming-table {
     width: 95%;
     margin: 20px auto;
+    border-collapse: separate; /* allow better row styling */
+    border-spacing: 0 15px; /* spacing between rows */
   }
 
-  #upcoming-table th:first-child,
-  #upcoming-table td:first-child {
-    width: 100%; /* Make title + cover cells full width */
+  /* Make each row stack nicely */
+  #upcoming-table thead {
+    display: none; /* hide the table headers */
+  }
+
+  #upcoming-table tbody tr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* Cells inside each row */
+  #upcoming-table td {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding: 5px 0;
   }
 
   .cover-wrapper img {
-    width: 150px; /* Smaller for mobile */
+    width: 150px;
     max-width: 80%;
     height: auto;
     margin: 0 auto;
   }
 
-  #upcoming-table th,
-  #upcoming-table td {
-    padding: 15px 5px;
+  .book-title {
+    margin-bottom: 8px;
   }
 }
-
 
 /* -------------------------
    ARC FORM PAGE
